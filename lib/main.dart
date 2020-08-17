@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import './question.dart';
 //private classes prefix with _, i.e. no private keyword as in java
 
 void main() {
@@ -45,7 +45,7 @@ class _SomeAppState extends State<SomeApp> {
         ),
         body: Column(
           children: [
-            Text(questions[_questionIndex]),
+            Question(questions[_questionIndex]),
             RaisedButton(
               child: Text("Answer 1"),
               onPressed: _answerQuestion,
