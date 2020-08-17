@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//private classes prefix with _, i.e. no private keyword as in java
+
 void main() {
   runApp(SomeApp());
 }
@@ -9,19 +11,19 @@ class SomeApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return SomeAppState();
+    return _SomeAppState();
   }
 }
 
-class SomeAppState extends State<SomeApp> {
-  var questionIndex = 0;
+class _SomeAppState extends State<SomeApp> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex++;
+      _questionIndex++;
     });
 
-    print(questions[questionIndex]);
+    print(questions[_questionIndex]);
   }
 
   var questions = [
@@ -43,18 +45,18 @@ class SomeAppState extends State<SomeApp> {
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Text(questions[_questionIndex]),
             RaisedButton(
               child: Text("Answer 1"),
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
             ),
             RaisedButton(
               child: Text("Answer 2"),
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
             ),
             RaisedButton(
               child: Text("Answer 2"),
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
             ),
           ],
         ),
