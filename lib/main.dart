@@ -5,7 +5,35 @@ void main() {
   runApp(SomeApp());
 }
 
-class SomeApp extends StatelessWidget {
+class SomeApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return SomeAppState();
+  }
+}
+
+class SomeAppState extends State<SomeApp> {
+  var questionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      questionIndex++;
+    });
+
+    print(questions[questionIndex]);
+  }
+
+  var questions = [
+    "What's your favourite color?",
+    "What's your favourite tiger?",
+    "What's your favourite salad?",
+    "What's your favourite dressing?",
+    "What's your favourite chair?",
+    "What's your favourite guac?",
+    "What's your favourite floor?",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,18 +43,18 @@ class SomeApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text("The question"),
+            Text(questions[questionIndex]),
             RaisedButton(
               child: Text("Answer 1"),
-              onPressed: null,
+              onPressed: answerQuestion,
             ),
             RaisedButton(
               child: Text("Answer 2"),
-              onPressed: null,
+              onPressed: answerQuestion,
             ),
             RaisedButton(
               child: Text("Answer 2"),
-              onPressed: null,
+              onPressed: answerQuestion,
             ),
           ],
         ),
