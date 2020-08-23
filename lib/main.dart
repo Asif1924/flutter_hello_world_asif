@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import './answer.dart';
 import './question.dart';
 //private classes prefix with _, i.e. no private keyword as in java
 
@@ -27,13 +28,18 @@ class _SomeAppState extends State<SomeApp> {
   }
 
   var questions = [
-    "What's your favourite color?",
-    "What's your favourite tiger?",
-    "What's your favourite salad?",
-    "What's your favourite dressing?",
-    "What's your favourite chair?",
-    "What's your favourite guac?",
-    "What's your favourite floor?",
+    {
+      "questionText": "What's your favourite color?",
+      "answers": ["Black", "Red", "Green", "White"]
+    },
+    {
+      "questionText": "What's your favourite tiger?",
+      "answers": ["Tiger", "Lion", "Liger", "TiLiger"]
+    },
+    {
+      "questionText": "What's your favourite salad?",
+      "answers": ["Cesar", "Ranch", "House", "Greek"]
+    },
   ];
 
   @override
@@ -46,18 +52,9 @@ class _SomeAppState extends State<SomeApp> {
         body: Column(
           children: [
             Question(questions[_questionIndex]),
-            RaisedButton(
-              child: Text("Answer 1"),
-              onPressed: _answerQuestion,
-            ),
-            RaisedButton(
-              child: Text("Answer 2"),
-              onPressed: _answerQuestion,
-            ),
-            RaisedButton(
-              child: Text("Answer 2"),
-              onPressed: _answerQuestion,
-            ),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
           ],
         ),
       ),
