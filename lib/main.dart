@@ -19,15 +19,7 @@ class SomeApp extends StatefulWidget {
 class _SomeAppState extends State<SomeApp> {
   var _questionIndex = 0;
 
-  void _answerQuestion() {
-    setState(() {
-      _questionIndex++;
-    });
-
-    print(questions[_questionIndex]);
-  }
-
-  var questions = [
+  final questions = const [
     {
       "questionText": "What's your favourite color?",
       "answers": ["Black", "Red", "Green", "White"]
@@ -41,6 +33,16 @@ class _SomeAppState extends State<SomeApp> {
       "answers": ["Cesar", "Ranch", "House", "Greek"]
     },
   ];
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex++;
+    });
+    print(_questionIndex);
+    if (_questionIndex < questions.length) {
+      print("We have more questions!");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
