@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './answer.dart';
-import './question.dart';
+import "quiz.dart";
+import 'result.dart';
 //private classes prefix with _, i.e. no private keyword as in java
 
 void main() {
@@ -19,7 +19,7 @@ class SomeApp extends StatefulWidget {
 class _SomeAppState extends State<SomeApp> {
   var _questionIndex = 0;
 
-  final questions = const [
+  final _questions = const [
     {
       "questionText": "What's your favourite color?",
       "answers": ["Black", "Red", "Green", "White"]
@@ -39,7 +39,7 @@ class _SomeAppState extends State<SomeApp> {
       _questionIndex++;
     });
     print(_questionIndex);
-    if (_questionIndex < questions.length) {
+    if (_questionIndex < _questions.length) {
       print("We have more questions!");
     }
   }
@@ -51,17 +51,12 @@ class _SomeAppState extends State<SomeApp> {
         appBar: AppBar(
           title: Text("Some App Bar"),
         ),
-        body: (_questionIndex < questions.length)
-            ? Column(
-                children: [
-                  Question(questions[_questionIndex]['questionText']),
-                  ...(questions[_questionIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  }).toList()
-                ],
-              )
-            : Center(child: Text("You did it!")),
+        body: (_questionIndex < _questions.length)
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions)
+            : Result(),
       ),
     );
   }
